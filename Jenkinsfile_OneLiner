@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('multisategbuild without buildkit') {
+            steps {
+                sh 'docker build -t Test:v1 --target post .'
+            }
+        }
+    }
+}
