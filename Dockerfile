@@ -1,16 +1,18 @@
+#  Pre Build
+FROM alpine:latest as pre-build
+WORKDIR /code
+COPY ./someFile.txt ./code/someFile.txt
+RUN cat someFile.txt
+RUN echo "PRE-BUILD"
+
 # Building
 FROM alpine:latest as builder
-WORKDIR /app
-RUN echo "Some Text here" > file 
-RUN echo "this is build"; cat .file
-
+COPY --from=pre-build ./code/someFile.txt ./someFile.txt
+RUN echo "building .."
 
 # Test
 FROM  alpine:latest as test
-COPY --from=builder ./app ./
 RUN echo "This is Test stage"
-RUN ls
-
 
 # Security
 FROM alpine:latest as security
@@ -28,5 +30,6 @@ RUN echo "Front-End is up and Running"
 FROM alpine:latest as deploy
 RUN echo "Starship engine hot and ready for deployment in 3...."
 
-
-
+# Post
+FROM alpine:latest as post
+RUN echo "clear environment"
