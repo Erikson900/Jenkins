@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('multisategbuild without buildkit') {
+        stage('multisatge build without buildkit') {
             steps {
-                sh 'docker build -t Test:v1 --target post .'
+                sh 'docker build Dockerfile -t test:v1 --target post .'
             }
         }
     }
