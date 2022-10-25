@@ -4,32 +4,32 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target build .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target build .'
             }
         }
         stage('test') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target test .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target test .'
             }
         }
         stage('security') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target security .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target security .'
             }
         }
         stage('backend') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target back-end .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target back-end .'
             }
         }
         stage('front-end') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target front-end .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target front-end .'
             }
         }
         stage('deploy') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t Test:v1 --target deploy .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target deploy .'
             }
         }
     }
