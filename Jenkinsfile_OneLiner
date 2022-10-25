@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('multisatge build without buildkit') {
             steps {
-                sh 'docker build Dockerfile -t test:v1 --target post .'
+                sh 'docker build -f Dockerfile -t test:v1 --target post .'
             }
         }
     }
