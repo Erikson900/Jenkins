@@ -9,7 +9,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target build .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target builder .'
             }
         }
         stage('test') {
@@ -24,12 +24,12 @@ pipeline {
         }
         stage('backend') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target back-end .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target backend .'
             }
         }
         stage('front-end') {
             steps {
-                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target front-end .'
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target frontend .'
             }
         }
         stage('deploy') {
