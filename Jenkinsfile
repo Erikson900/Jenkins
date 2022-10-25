@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+         stage('pre-build') {
+            steps {
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target pre-build .'
+            }
+        }
         stage('build') {
             steps {
                 sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target build .'
@@ -30,6 +35,11 @@ pipeline {
         stage('deploy') {
             steps {
                 sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target deploy .'
+            }
+        }
+         stage('post') {
+            steps {
+                sh 'DOCKER_BUILDKIT=1 docker build -t test:v1 --target post .'
             }
         }
     }
