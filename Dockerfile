@@ -2,7 +2,7 @@
 FROM alpine:latest as pre-build
 WORKDIR /code
 COPY ./someFile.txt ./someFile.txt
-RUN cat .someFile.txt
+RUN cat ./someFile.txt
 RUN echo "PRE-BUILD"
 
 # Building
