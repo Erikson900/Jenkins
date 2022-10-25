@@ -7,7 +7,7 @@ RUN echo "PRE-BUILD"
 
 # Building
 FROM alpine:latest as builder
-COPY --from=pre-build ./code/someFile.txt ./someFile.txt
+COPY --from=pre-build /code/someFile.txt ./someFile.txt
 RUN echo "building .."
 
 # Test
